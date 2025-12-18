@@ -294,13 +294,6 @@ body {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
 }
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 100px;
-    opacity: 0.2;
-}
 
 @keyframes slideInLeft {
     from {
@@ -392,30 +385,8 @@ body {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
 }
-    border: none;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-}
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-}
 
-.btn-outline {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
-}
-
-.btn-outline:hover {
-    background: var(--white);
-    color: var(--dark);
-    transform: translateY(-2px);
-}
+/* Section Styles */
 
 /* Services Section */
 .services {
