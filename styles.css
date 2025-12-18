@@ -891,31 +891,199 @@ body {
     opacity: 1;
 }
 
-/* WhatsApp Floating Button */
-.whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+/* Guarantees Section */
+.guarantees {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a2a4e 100%);
+    padding: 80px 0;
+}
+
+.guarantees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.guarantee-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.guarantee-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-5px);
+}
+
+.guarantee-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
-    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
     font-size: 1.8rem;
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s ease;
-    z-index: 999;
-    text-decoration: none;
-    animation: bounce 2s infinite;
+    margin: 0 auto 15px;
 }
 
-.whatsapp-btn:hover {
-    transform: scale(1.15);
-    box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+.guarantee-item h3 {
+    color: var(--white);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
 }
+
+.guarantee-item p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* CTA Emergency Section */
+.cta-emergency {
+    background: linear-gradient(135deg, #f5576c 0%, #ff6b6b 100%);
+    padding: 60px 0;
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.cta-text h2 {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.cta-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    max-width: 400px;
+}
+
+.cta-buttons-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-lg,
+.btn-secondary-lg {
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary-lg {
+    background: var(--white);
+    color: #f5576c;
+}
+
+.btn-primary-lg:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary-lg {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary-lg:hover {
+    background: var(--white);
+    color: #f5576c;
+}
+
+/* FAQ Section */
+.faq {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--bg-light);
+    color: var(--primary);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+.faq-answer p {
+    padding: 20px;
+    color: var(--text-light);
+    line-height: 1.6;
+    background: var(--bg-light);
+}
+
+.reviewer-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
 
 @keyframes bounce {
     0%, 100% {
@@ -937,6 +1105,27 @@ body {
         width: 55px;
         height: 55px;
         font-size: 1.5rem;
+    }
+
+    .cta-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cta-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-buttons-group {
+        justify-content: center;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guarantees-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

@@ -36,6 +36,24 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     this.reset();
 });
 
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Fermer tous les autres éléments
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Ouvrir le courant s'il n'était pas actif
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    });
+});
+
 // Animation au scroll
 const observerOptions = {
     threshold: 0.1,
