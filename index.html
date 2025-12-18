@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Plomberie Pro - Plombier Expert Paris 24h/24 | Devis Gratuit</title>
     <meta name="description" content="Plomberie Pro : plombier expert à Paris. Interventions 24h/24, travaux neufs, rénovations, dépannages. Certifié, assuré. Devis gratuit.">
+    <meta name="keywords" content="plombier, plomberie, Paris, urgence, devis gratuit, dépannage">
+    <meta property="og:title" content="Plomberie Pro - Expert en Plomberie à Paris">
+    <meta property="og:description" content="Services professionnels de plomberie 24h/24. Devis gratuit, intervention rapide.">
+    <meta property="og:type" content="business.business">
+    <link rel="canonical" href="https://github.com/Nanou1412/plombier">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -45,15 +53,15 @@
                 <p class="hero-subtitle">Solutions professionnelles haut de gamme • Intervention rapide 24h/24 • Devis gratuit et sans engagement</p>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number">15+</span>
+                        <span class="stat-number" data-count="15">15</span><span>+</span>
                         <span class="stat-label">Ans d'expérience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">5000+</span>
+                        <span class="stat-number" data-count="5000">5000</span><span>+</span>
                         <span class="stat-label">Clients satisfaits</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">98%</span>
+                        <span class="stat-number" data-count="98">98</span><span>%</span>
                         <span class="stat-label">Taux de satisfaction</span>
                     </div>
                 </div>
@@ -445,11 +453,11 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Votre nom" required>
-                    <input type="email" placeholder="Votre email" required>
-                    <input type="tel" placeholder="Votre téléphone" required>
-                    <textarea placeholder="Décrivez votre problème..." rows="5" required></textarea>
+                <form class="contact-form" id="contactForm" method="POST" action="#">
+                    <input type="text" name="name" placeholder="Votre nom" required aria-label="Nom">
+                    <input type="email" name="email" placeholder="Votre email" required aria-label="Email">
+                    <input type="tel" name="phone" placeholder="Votre téléphone" required aria-label="Téléphone">
+                    <textarea name="message" placeholder="Décrivez votre problème..." rows="5" required aria-label="Message"></textarea>
                     <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
             </div>
