@@ -1466,6 +1466,116 @@ body {
 .review-card:nth-child(2) { animation-delay: 0.25s; }
 .review-card:nth-child(3) { animation-delay: 0.4s; }
 
+/* Why Us Section */
+.why-us {
+    background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+    padding: 4rem 2rem;
+    margin-top: 3rem;
+}
+
+.why-us h2 {
+    font-size: 2.2rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    text-align: center;
+    animation: slideInDown 0.8s ease-out;
+}
+
+.why-us-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    animation: slideUp 0.8s ease-out both;
+}
+
+.why-item:nth-child(1) { animation-delay: 0.1s; }
+.why-item:nth-child(2) { animation-delay: 0.2s; }
+.why-item:nth-child(3) { animation-delay: 0.3s; }
+.why-item:nth-child(4) { animation-delay: 0.4s; }
+
+.why-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--accent);
+}
+
+.why-item-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.why-item h3 {
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+}
+
+.why-item p {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Service Areas Section */
+.service-areas {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a2a4a 100%);
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+    color: var(--white);
+}
+
+.service-areas h2 {
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: slideInDown 0.8s ease-out;
+}
+
+.areas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.area-badge {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    animation: fadeInScale 0.6s ease-out both;
+    transition: all 0.3s ease;
+}
+
+.area-badge:nth-child(1) { animation-delay: 0.1s; }
+.area-badge:nth-child(2) { animation-delay: 0.2s; }
+.area-badge:nth-child(3) { animation-delay: 0.3s; }
+.area-badge:nth-child(4) { animation-delay: 0.4s; }
+.area-badge:nth-child(5) { animation-delay: 0.5s; }
+
+.area-badge:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
 @media (max-width: 480px) {
     .logo-main {
         font-size: 0.9rem;
