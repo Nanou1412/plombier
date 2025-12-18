@@ -812,32 +812,45 @@ body {
 
 .contact-form {
     background: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    border: 1px solid #f0f0f0;
+    gap: 1.4rem;
+    border: 1px solid #f5f5f5;
+    transition: all 0.4s ease;
+}
+
+.contact-form:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 14px;
+    padding: 15px 16px;
     border: 2px solid #e5e7eb;
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: inherit;
     font-size: 0.95rem;
     transition: all 0.3s ease;
     background: var(--white);
+    font-weight: 500;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #a0aec0;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-    background: rgba(37, 99, 235, 0.01);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.12);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.02), rgba(6, 182, 212, 0.02));
+    transform: translateY(-1px);
 }
 
 /* Footer */
@@ -1212,8 +1225,34 @@ body {
 
 /* CTA Emergency Section */
 .cta-emergency {
-    background: linear-gradient(135deg, #f5576c 0%, #ff6b6b 100%);
-    padding: 60px 0;
+    background: linear-gradient(135deg, #f5576c 0%, #ff6b6b 50%, #ff8787 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-emergency::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite;
+}
+
+.cta-emergency::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 18s ease-in-out infinite reverse;
 }
 
 .cta-content {
@@ -1221,18 +1260,24 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-text h2 {
     color: var(--white);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .cta-text p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     font-size: 1.1rem;
-    max-width: 400px;
+    max-width: 450px;
+    line-height: 1.8;
+    font-weight: 500;
 }
 
 .cta-buttons-group {
@@ -1362,6 +1407,64 @@ body {
         transform: translateY(-10px);
     }
 }
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-soft {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Loading animation for page */
+.page-loader {
+    animation: fadeInScale 0.6s ease-out;
+}
+
+/* Stagger animations for elements */
+.service-card, .portfolio-item, .review-card {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+.portfolio-item:nth-child(1) { animation-delay: 0.15s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.45s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.6s; }
+
+.review-card:nth-child(1) { animation-delay: 0.1s; }
+.review-card:nth-child(2) { animation-delay: 0.25s; }
+.review-card:nth-child(3) { animation-delay: 0.4s; }
 
 @media (max-width: 480px) {
     .logo-main {
