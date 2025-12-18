@@ -165,7 +165,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 100%);
+    background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 50%, #2d1b4e 100%);
     color: var(--white);
     padding: 100px 0;
     position: relative;
@@ -179,8 +179,26 @@ body {
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
     border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(30px); }
 }
 
 .hero .container {
@@ -336,14 +354,15 @@ body {
     font-size: 1rem;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.5px;
 }
 
 .btn::before {
@@ -353,26 +372,68 @@ body {
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
+    z-index: 0;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .btn:hover::before {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
+}
+
+.btn:hover::after {
+    left: 100%;
 }
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.5);
+}
+
+.btn-primary i {
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i {
+    transform: rotate(12deg);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
 }
 
 .btn-outline {
@@ -544,10 +605,47 @@ body {
     gap: 0.5rem;
     transition: gap 0.3s ease;
     font-size: 0.95rem;
+    margin: 0 1.5rem 1.5rem 1.5rem;
 }
 
 .service-link:hover {
     gap: 0.8rem;
+}
+
+/* Service Price & Badge */
+.service-price {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0.5rem 1.5rem 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.service-price strong {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.service-badge-urgent {
+    display: inline-block;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 1rem 1.5rem 0.5rem;
+    animation: pulse-urgent 2s infinite;
+}
+
+@keyframes pulse-urgent {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+    }
+}
 }
 
 /* Portfolio Section */
