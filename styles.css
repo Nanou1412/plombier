@@ -839,6 +839,7 @@ body {
     .contact-content {
         grid-template-columns: 1fr;
     }
+}
 
 /* Reviews Section */
 .reviews {
@@ -1169,42 +1170,6 @@ body {
         transform: translateY(-10px);
     }
 }
-
-@media (max-width: 768px) {
-    .reviews-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .whatsapp-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 55px;
-        height: 55px;
-        font-size: 1.5rem;
-    }
-
-    .cta-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .cta-text h2 {
-        font-size: 1.8rem;
-    }
-
-    .cta-buttons-group {
-        justify-content: center;
-    }
-
-    .faq-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .guarantees-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 
 @media (max-width: 480px) {
     .logo-main {
