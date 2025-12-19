@@ -101,16 +101,20 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.parentElement;
-        const isOpen = faqItem.classList.contains('open');
+        const isActive = faqItem.classList.contains('active');
         
         // Fermer tous les autres éléments
         document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('open');
+            item.classList.remove('active');
+            const answer = item.querySelector('.faq-answer');
+            if(answer) answer.style.maxHeight = null;
         });
         
         // Ouvrir le courant s'il n'était pas actif
-        if (!isOpen) {
-            faqItem.classList.add('open');
+        if (!isActive) {
+            faqItem.classList.add('active');
+            const answer = faqItem.querySelector('.faq-answer');
+            if(answer) answer.style.maxHeight = answer.scrollHeight + "px";
         }
     });
 });
