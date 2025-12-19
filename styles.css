@@ -446,6 +446,9 @@ ul {
     border: 1px solid var(--bg-body);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .service-card:hover {
@@ -479,6 +482,12 @@ ul {
     margin-bottom: 1.5rem;
 }
 
+.service-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .service-content h3 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
@@ -490,6 +499,11 @@ ul {
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 1.1rem;
+}
+
+.service-benefits {
+    margin-bottom: 1.5rem;
+    flex: 1;
 }
 
 .service-benefits li {
@@ -798,9 +812,15 @@ ul {
    ========================================== */
 
 @media (max-width: 968px) {
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 3rem;
     }
 
     .hero-content {
@@ -809,7 +829,7 @@ ul {
 
     .hero-visual {
         order: 1;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .hero h1 {
@@ -827,14 +847,45 @@ ul {
     .contact-content {
         grid-template-columns: 1fr;
     }
+    
+    .section-header {
+        margin-bottom: 3rem;
+    }
+    
+    .services, .process, .why-us, .portfolio, .reviews, .contact {
+        padding: 4rem 0;
+    }
 }
 
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
     
     .hamburger {
         display: block;
+    }
+    
+    .hero-shape {
+        width: 100%;
+        height: 50%;
+        top: 0;
+        right: 0;
+        border-radius: 0 0 50% 50%;
+        transform: none;
     }
 }
