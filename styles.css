@@ -301,11 +301,16 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
-.hero-image-wrapper {
-    font-size: 8rem;
-    color: rgba(6, 182, 212, 0.15);
+.hero-img-real {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: float 6s ease-in-out infinite;
+    border: 4px solid rgba(255,255,255,0.1);
 }
 
 /* ==========================================
@@ -855,6 +860,106 @@ body {
 
 .contact-form button {
     align-self: flex-start;
+}
+
+/* ==========================================
+   PROCESS
+   ========================================== */
+
+.process {
+    padding: 5rem 20px;
+    background: var(--white);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.process-item {
+    text-align: center;
+    position: relative;
+    padding: 2rem;
+    background: var(--gray-50);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.process-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.process-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+}
+
+.process-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.process-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.process-item p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* ==========================================
+   BRANDS
+   ========================================== */
+
+.brands {
+    padding: 4rem 20px;
+    background: var(--gray-50);
+}
+
+.brands-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.brand-item {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    opacity: 0.5;
+    transition: all 0.3s;
+    cursor: default;
+}
+
+.brand-item:hover {
+    opacity: 1;
+    color: var(--primary);
+    transform: scale(1.05);
 }
 
 /* ==========================================

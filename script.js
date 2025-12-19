@@ -101,16 +101,16 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const faqItem = button.parentElement;
-        const isActive = faqItem.classList.contains('active');
+        const isOpen = faqItem.classList.contains('open');
         
         // Fermer tous les autres éléments
         document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('active');
+            item.classList.remove('open');
         });
         
         // Ouvrir le courant s'il n'était pas actif
-        if (!isActive) {
-            faqItem.classList.add('active');
+        if (!isOpen) {
+            faqItem.classList.add('open');
         }
     });
 });
