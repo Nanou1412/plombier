@@ -115,24 +115,22 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-// Animation au scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+// Scroll Reveal Animation (Class-based for better performance)
+const revealElements = document.querySelectorAll('.service-card, .process-item, .why-item, .portfolio-item, .review-card, .section-header, .hero-content, .hero-image, .cta-content');
 
-const observer = new IntersectionObserver(function(entries) {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target); // Only animate once
         }
     });
-}, observerOptions);
+}, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+});
 
-document.querySelectorAll('.service-card, .portfolio-item, .review-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
 });
