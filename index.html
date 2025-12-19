@@ -1,635 +1,423 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2563eb">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Plombier Paris 15 - Dépannage Urgent 7j/7 | Plomberie Dupont</title>
-    <meta name="description" content="Plombier Paris 15 - Intervention rapide en moins de 30 minutes. Dépannage WC, fuites, débouchage, chauffe-eau. Devis gratuit. 01 84 00 00 00">
-    <meta name="keywords" content="plombier, plomberie, Paris, urgence, devis gratuit, dépannage">
-    <meta property="og:title" content="Plomberie Pro - Expert en Plomberie à Paris">
-    <meta property="og:description" content="Services professionnels de plomberie 24h/24. Devis gratuit, intervention rapide.">
-    <meta property="og:type" content="business.business">
-    <link rel="canonical" href="https://github.com/Nanou1412/plombier">
-    <!-- Google Fonts -->
+    <title>Plomberie Élite Paris | L'Excellence du Service</title>
+    <meta name="description" content="Service de plomberie haut de gamme à Paris. Intervention 24/7, artisans experts, finitions impeccables.">
+    
+    <!-- Stack Technique Moderne : Tailwind CSS + Alpine.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Fonts: Plus Jakarta Sans (Moderne & Géométrique) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#0f172a', // Navy Dark
+                            800: '#1e293b',
+                            accent: '#d97706', // Bronze/Gold
+                            light: '#f1f5f9',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #f8fafc 0%, #e2e8f0 100%);
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-wrench"></i>
+<body class="font-sans text-slate-600 antialiased bg-slate-50" x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+
+    <!-- Navigation (Sticky & Glassmorphism) -->
+    <nav :class="{ 'glass-nav py-4': scrolled, 'bg-transparent py-6': !scrolled }" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-900 rounded-xl flex items-center justify-center text-brand-accent text-xl shadow-lg">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-bold text-brand-900 leading-none tracking-tight">ÉLITE</span>
+                        <span class="block text-xs font-semibold text-brand-accent tracking-widest uppercase">Plomberie</span>
+                    </div>
                 </div>
-                <div class="logo-text">
-                    <span class="logo-main">Plomberie Dupont</span>
-                    <span class="logo-sub">Paris 15 - 7j/7</span>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition">Accueil</a>
+                    <a href="#services" class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition">Expertise</a>
+                    <a href="#realisations" class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition">Réalisations</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-brand-900 text-white text-sm font-bold rounded-full hover:bg-brand-accent transition-colors shadow-lg shadow-brand-900/20">
+                        Urgence 24/7
+                    </a>
                 </div>
+
+                <!-- Mobile Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-brand-900 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="phone-btn" onclick="window.location.href='tel:0184000000'"><i class="fas fa-phone"></i> 01 84 00 00 00</button>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-transition 
+             class="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl py-4 px-6 flex flex-col space-y-4">
+            <a href="#home" @click="mobileMenuOpen = false" class="text-base font-medium text-slate-800">Accueil</a>
+            <a href="#services" @click="mobileMenuOpen = false" class="text-base font-medium text-slate-800">Expertise</a>
+            <a href="#realisations" @click="mobileMenuOpen = false" class="text-base font-medium text-slate-800">Réalisations</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="text-base font-bold text-brand-accent">Nous Contacter</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-        <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-shape"></div>
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <i class="fas fa-check-circle"></i> Disponible 24/7
+    <!-- Hero Section (Modern Split) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-600 uppercase tracking-wide">Disponible actuellement</span>
                     </div>
-                    <h1>Plomberie Moderne & <span class="text-gradient">Efficace</span></h1>
-                    <p class="hero-subtitle">Une expertise technique pour tous vos besoins en plomberie. Intervention rapide, tarifs transparents et garantie décennale.</p>
                     
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <span>Demander un devis</span>
-                            <i class="fas fa-arrow-right"></i>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-brand-900 leading-tight tracking-tight">
+                        L'Art de la <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-900 to-brand-accent">Plomberie</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Une approche artisanale modernisée. Nous intervenons à Paris pour vos urgences et vos projets de rénovation avec une exigence de qualité absolue.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="tel:0123456789" class="group relative px-8 py-4 bg-brand-900 text-white font-bold rounded-full overflow-hidden shadow-xl shadow-brand-900/30 hover:shadow-2xl transition-all">
+                            <div class="absolute inset-0 w-full h-full bg-brand-accent transition-transform duration-300 transform -translate-x-full group-hover:translate-x-0"></div>
+                            <span class="relative flex items-center gap-3">
+                                <i class="fa-solid fa-phone"></i> 01 84 00 00 00
+                            </span>
                         </a>
-                        <a href="tel:0123456789" class="btn btn-outline">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>01 23 45 67 89</span>
+                        <a href="#contact" class="px-8 py-4 bg-white text-brand-900 font-bold rounded-full border border-slate-200 hover:border-brand-900 transition-colors shadow-sm hover:shadow-md">
+                            Devis en ligne
                         </a>
                     </div>
 
-                    <div class="hero-trust">
-                        <div class="trust-item">
-                            <div class="trust-avatars">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
-                                <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client">
+                    <div class="pt-8 flex items-center justify-center lg:justify-start gap-8 text-slate-400">
+                        <i class="fa-brands fa-google text-2xl hover:text-brand-900 transition"></i>
+                        <div class="h-8 w-px bg-slate-300"></div>
+                        <div class="flex flex-col">
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                             </div>
-                            <div class="trust-text">
-                                <span class="stars">★★★★★</span>
-                                <p>4.9/5 par +500 clients</p>
+                            <span class="text-xs font-medium text-slate-500">4.9/5 sur Google Avis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Content -->
+                <div class="relative lg:h-[600px] flex items-center justify-center">
+                    <!-- Abstract Shapes -->
+                    <div class="absolute top-0 right-0 w-72 h-72 bg-brand-accent/10 rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-72 h-72 bg-brand-900/10 rounded-full blur-3xl"></div>
+                    
+                    <!-- Main Image -->
+                    <div class="relative z-10 w-full max-w-md mx-auto animate-float">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                            <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?q=80&w=1000&auto=format&fit=crop" alt="Plombier Expert" class="w-full h-auto object-cover">
+                            
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur p-4 rounded-xl shadow-lg border border-slate-100 flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">
+                                    <i class="fa-solid fa-shield-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-brand-900">Garantie Décennale</p>
+                                    <p class="text-xs text-slate-500">Assurance AXA incluse</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1621905476059-5f3460b5683b?q=80&w=1000&auto=format&fit=crop" alt="Plombier professionnel" class="main-img">
-                        <div class="floating-card card-1">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <strong>Intervention</strong>
-                                <span>< 30 minutes</span>
-                            </div>
-                        </div>
-                        <div class="floating-card card-2">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <strong>Garantie</strong>
-                                <span>10 ans incluse</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="custom-shape-divider-bottom-1689246789">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Dépannage Plomberie à Paris 15</h2>
-            <p class="section-description">Tous nos services de plomberie pour votre maison et votre entreprise</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1505798577917-a65157d3320a?q=80&w=800&auto=format&fit=crop" alt="Dépannage Plomberie Urgent" class="service-image">
-                    <div class="service-content">
-                        <h3>Dépannage Urgent</h3>
-                        <span class="service-price">80€+</span>
-                        <p>Fuite, rupture, bouchon ? Intervention rapide sous 30 minutes.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Intervention immédiate</li>
-                            <li>✓ 7j/7 ouvert</li>
-                            <li>✓ Diagnostic gratuit</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Appeler d'urgence</a>
+    <!-- Services Grid -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-3">Nos Services</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6">Une expertise complète pour votre habitat</h3>
+                <p class="text-slate-600">De la simple fuite à la rénovation complète de salle de bain, nous apportons le même soin à chaque intervention.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 hover:bg-brand-900 transition-all duration-300 hover:shadow-xl cursor-pointer border border-slate-100 hover:border-brand-900">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl text-brand-900 mb-6 shadow-sm group-hover:bg-brand-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-droplet-slash"></i>
                     </div>
+                    <h4 class="text-xl font-bold text-brand-900 mb-3 group-hover:text-white">Recherche de Fuite</h4>
+                    <p class="text-slate-600 mb-6 group-hover:text-slate-300">Technologie non-destructive (caméra thermique, gaz traceur) pour localiser précisément vos fuites.</p>
+                    <span class="text-brand-accent font-bold text-sm flex items-center gap-2 group-hover:text-white">
+                        En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
 
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1581578014828-1609518057a5?q=80&w=800&auto=format&fit=crop" alt="Recherche de Fuite" class="service-image">
-                    <div class="service-content">
-                        <h3>Recherche & Réparation</h3>
-                        <span class="service-price">100€+</span>
-                        <p>Détection et réparation des fuites d'eau. Localisation précise.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Diagnostic rapide</li>
-                            <li>✓ Sans casse</li>
-                            <li>✓ Garantie 1 an</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Appeler maintenant</a>
+                <!-- Service 2 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 hover:bg-brand-900 transition-all duration-300 hover:shadow-xl cursor-pointer border border-slate-100 hover:border-brand-900">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl text-brand-900 mb-6 shadow-sm group-hover:bg-brand-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-bath"></i>
                     </div>
+                    <h4 class="text-xl font-bold text-brand-900 mb-3 group-hover:text-white">Sanitaire & Bain</h4>
+                    <p class="text-slate-600 mb-6 group-hover:text-slate-300">Installation et rénovation de salles de bain. Douches à l'italienne, baignoires balnéo, WC suspendus.</p>
+                    <span class="text-brand-accent font-bold text-sm flex items-center gap-2 group-hover:text-white">
+                        En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
 
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" alt="Débouchage WC" class="service-image">
-                    <div class="service-content">
-                        <h3>Débouchage WC/Canalisation</h3>
-                        <span class="service-price">120€+</span>
-                        <p>Débouchage efficace sans dommage avec équipement professionnel.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Résultat garanti</li>
-                            <li>✓ Sans casse</li>
-                            <li>✓ Nettoyage complet</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Intervention rapide</a>
+                <!-- Service 3 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 hover:bg-brand-900 transition-all duration-300 hover:shadow-xl cursor-pointer border border-slate-100 hover:border-brand-900">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-2xl text-brand-900 mb-6 shadow-sm group-hover:bg-brand-accent group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-fire-burner"></i>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1521207418431-28454dd34810?q=80&w=800&auto=format&fit=crop" alt="Chauffe-eau" class="service-image">
-                    <div class="service-content">
-                        <h3>Chauffe-eau</h3>
-                        <span class="service-price">150€+</span>
-                        <p>Réparation, entretien et remplacement de chauffe-eau.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Remplacement rapide</li>
-                            <li>✓ Installation pro</li>
-                            <li>✓ Devis gratuit</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Demander un devis</a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=800&auto=format&fit=crop" alt="Rénovation Salle de Bain" class="service-image">
-                    <div class="service-content">
-                        <h3>Rénovation Salle de Bain</h3>
-                        <span class="service-price">500€+</span>
-                        <p>Installation complète de salle de bain et petits travaux.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Qualité garantie</li>
-                            <li>✓ Respect des délais</li>
-                            <li>✓ Travail propre</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Consulter</a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=800&auto=format&fit=crop" alt="Maintenance" class="service-image">
-                    <div class="service-content">
-                        <h3>Maintenance Entretien</h3>
-                        <span class="service-price">60€+</span>
-                        <p>Entretien régulier de vos installations sanitaires.</p>
-                        <ul class="service-benefits">
-                            <li>✓ Diagnostics réguliers</li>
-                            <li>✓ Prévention pannes</li>
-                            <li>✓ Économies d'eau</li>
-                        </ul>
-                        <a href="tel:0184000000" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Contacter</a>
-                    </div>
+                    <h4 class="text-xl font-bold text-brand-900 mb-3 group-hover:text-white">Chauffe-eau</h4>
+                    <p class="text-slate-600 mb-6 group-hover:text-slate-300">Dépannage, détartrage et remplacement de ballons d'eau chaude toutes marques (Atlantic, Thermor).</p>
+                    <span class="text-brand-accent font-bold text-sm flex items-center gap-2 group-hover:text-white">
+                        En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">DÉROULEMENT</div>
-                <h2>Comment ça marche ?</h2>
-                <p class="section-description">Une intervention simple et transparente en 4 étapes</p>
-            </div>
-            <div class="process-grid">
-                <div class="process-item">
-                    <div class="process-number">1</div>
-                    <div class="process-icon"><i class="fas fa-phone-alt"></i></div>
-                    <h3>Contact</h3>
-                    <p>Appelez-nous ou remplissez le formulaire. Réponse immédiate.</p>
+    <!-- Stats Section -->
+    <section class="py-20 bg-brand-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-accent">15</div>
+                    <div class="text-sm md:text-base text-slate-300 font-medium">Années d'expérience</div>
                 </div>
-                <div class="process-item">
-                    <div class="process-number">2</div>
-                    <div class="process-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h3>Devis Gratuit</h3>
-                    <p>Diagnostic précis et devis clair avant toute intervention.</p>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-accent">5k+</div>
+                    <div class="text-sm md:text-base text-slate-300 font-medium">Clients satisfaits</div>
                 </div>
-                <div class="process-item">
-                    <div class="process-number">3</div>
-                    <div class="process-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Intervention</h3>
-                    <p>Réparation rapide et soignée par nos experts qualifiés.</p>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-accent">30</div>
+                    <div class="text-sm md:text-base text-slate-300 font-medium">Minutes délai moyen</div>
                 </div>
-                <div class="process-item">
-                    <div class="process-number">4</div>
-                    <div class="process-icon"><i class="fas fa-smile"></i></div>
-                    <h3>Satisfaction</h3>
-                    <p>Vérification ensemble et garantie de l'intervention.</p>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-bold text-brand-accent">24/7</div>
+                    <div class="text-sm md:text-base text-slate-300 font-medium">Disponibilité</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pourquoi nous Section -->
-    <section class="why-us">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">AVANTAGES</div>
-                <h2>Pourquoi nous choisir ?</h2>
+    <!-- Portfolio / Realisations -->
+    <section id="realisations" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-3">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-900">Nos dernières réalisations</h3>
+                </div>
+                <a href="#" class="text-brand-900 font-bold hover:text-brand-accent transition flex items-center gap-2">
+                    Voir tout le portfolio <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="why-us-grid">
-                <div class="why-item">
-                    <div class="why-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Artisan local à Paris 15</h3>
-                    <p>Nous connaissons parfaitement Paris 15 et les quartiers proches.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Intervention rapide 7j/7</h3>
-                    <p>Présent le week-end et les jours fériés pour les urgences.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">
-                        <i class="fas fa-euro-sign"></i>
-                    </div>
-                    <h3>Prix annoncés avant intervention</h3>
-                    <p>Transparence totale, pas de surprise à la fin.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Travail propre et garanti</h3>
-                    <p>Garantie sur nos interventions, travail minutieux.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Zones d'intervention -->
-    <section class="service-areas">
-        <div class="container">
-            <h2>Zones d'intervention</h2>
-            <div class="areas-list">
-                <span class="area-badge">Paris 15</span>
-                <span class="area-badge">Paris 14</span>
-                <span class="area-badge">Paris 7</span>
-                <span class="area-badge">Vanves</span>
-                <span class="area-badge">Issy-les-Moulineaux</span>
-            </div>
-        </div>
-    </section>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 md:h-96 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1000&auto=format&fit=crop" alt="Salle de bain luxe" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-brand-accent text-sm font-bold uppercase mb-2 block">Rénovation</span>
+                        <h4 class="text-white text-2xl font-bold mb-2">Salle de Bain Marbre</h4>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Installation complète : douche italienne, robinetterie encastrée, double vasque.</p>
+                    </div>
+                </div>
 
-    <!-- Avis Clients Section -->
-    <section class="reviews">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">TÉMOIGNAGES</div>
-                <h2>Avis de nos clients</h2>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <!-- Project 2 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 md:h-96 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1000&auto=format&fit=crop" alt="Cuisine moderne" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-brand-accent text-sm font-bold uppercase mb-2 block">Installation</span>
+                        <h4 class="text-white text-2xl font-bold mb-2">Cuisine Professionnelle</h4>
+                        <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Raccordement complet pour restaurant étoilé à Paris 7ème.</p>
                     </div>
-                    <p class="review-text">"Intervention rapide, plombier sérieux et efficace. Je recommande."</p>
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <h4>Jean P.</h4>
-                            <p>Paris 15</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Appelé pour une fuite, arrivé en 20 minutes. Travail propre et rapide."</p>
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <h4>Sophie M.</h4>
-                            <p>Vanves</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Très professionnel, prix annoncé à l'avance. Exactement ce qu'on avait demandé."</p>
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <h4>Pierre L.</h4>
-                            <p>Paris 14</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications & Garanties Section -->
-    <section class="guarantees">
-        <div class="container">
-            <div class="guarantees-grid">
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Assurance RCA</h3>
-                    <p>Couverture complète pour votre tranquillité</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3>Certifications Pro</h3>
-                    <p>Qualifications reconnues et agréées</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Garantie 10 ans</h3>
-                    <p>Travail garanti sans frais supplémentaires</p>
-                </div>
-                <div class="guarantee-item">
-                    <div class="guarantee-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>24h/24 - 7j/7</h3>
-                    <p>Disponible même les jours fériés</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Emergency Section -->
-    <section class="cta-emergency">
-        <div class="container">
-            <div class="cta-content">
-                <div class="cta-text">
-                    <h2>🚨 Urgence Plomberie ?</h2>
-                    <p>Fuite, bouchon, ou panne ? Contactez-nous immédiatement !</p>
-                </div>
-                <div class="cta-buttons-group">
-                    <a href="tel:0123456789" class="btn btn-primary-lg">📞 Appel Urgent</a>
-                    <a href="https://wa.me/33712345678" class="btn btn-secondary-lg" target="_blank">💬 WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">QUESTIONS FRÉQUENTES</div>
-                <h2>FAQ</h2>
-                <p class="section-description">Retrouvez les réponses à vos questions les plus courantes</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Quel est votre tarif pour une intervention ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Nos tarifs varient selon la nature et la complexité de l'intervention. Nous proposons un devis gratuit sans engagement. Pour une urgence, comptez environ 80€ la première demi-heure.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Intervenez-vous le dimanche et les jours fériés ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, nous sommes disponibles 24h/24 et 7j/7 pour les urgences. Des frais supplémentaires peuvent s'appliquer les jours fériés.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Avez-vous une garantie sur vos interventions ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolument ! Nous garantissons tous nos travaux pendant 10 ans. En cas de problème, nous intervenons gratuitement.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Comment puis-je obtenir un devis ?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Trois solutions : appelez-nous au 01 23 45 67 89, remplissez le formulaire de contact, ou contactez-nous via WhatsApp. Devis gratuit en moins de 2h !</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">PORTFOLIO</div>
-                <h2>Nos Réalisations</h2>
-                <p class="section-description">Projets récents qui témoignent de notre expertise et savoir-faire</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image portfolio-img-1">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800&auto=format&fit=crop" alt="Rénovation Salle de Bain" loading="lazy">
-                        <span class="portfolio-overlay">Rénovation Salle de Bain</span>
-                    </div>
-                    <h3>Rénovation Appartement</h3>
-                    <p>Rénovation complète plomberie d'un appartement parisien</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image portfolio-img-2">
-                        <img src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" alt="Installation Hôtel" loading="lazy">
-                        <span class="portfolio-overlay">Installation Hôtel</span>
-                    </div>
-                    <h3>Hôtel 4 Étoiles</h3>
-                    <p>Système de plomberie pour établissement touristique</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image portfolio-img-3">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Immeuble Commercial" loading="lazy">
-                        <span class="portfolio-overlay">Immeuble Commercial</span>
-                    </div>
-                    <h3>Immeuble Commercial</h3>
-                    <p>Installation de plomberie multi-étages pour bâtiment commercial</p>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image portfolio-img-4">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=800&auto=format&fit=crop" alt="Cuisine Restaurant" loading="lazy">
-                        <span class="portfolio-overlay">Cuisine Restaurant</span>
-                    </div>
-                    <h3>Restaurant</h3>
-                    <p>Plomberie professionnelle pour cuisine de restaurant</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">CONTACT</div>
-                <h2>Nous Appeler</h2>
-                <p class="section-description">Intervention en moins de 30 minutes</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Téléphone</h3>
-                            <p><a href="tel:0184000000" style="color: inherit; text-decoration: none; font-weight: bold;">01 84 00 00 00</a></p>
-                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Urgences 24h/24</p>
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <!-- Contact Info -->
+                <div class="lg:w-5/12 p-12 lg:p-16 bg-brand-800 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-bold mb-6">Parlons de votre projet</h3>
+                        <p class="text-slate-300 mb-12">Une urgence ou un projet de rénovation ? Notre équipe vous répond sous 30 minutes.</p>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 uppercase font-bold tracking-wider">Téléphone</p>
+                                    <p class="text-xl font-bold">01 84 00 00 00</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 uppercase font-bold tracking-wider">Email</p>
+                                    <p class="text-xl font-bold">contact@elite-plomberie.fr</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-accent text-xl shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-slate-400 uppercase font-bold tracking-wider">Zone d'intervention</p>
+                                    <p class="text-lg font-bold">Paris & Île-de-France</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Zones d'intervention</h3>
-                            <p>Paris 15, 14, 7</p>
-                            <p>Vanves, Issy-les-Moulineaux</p>
+
+                    <div class="mt-12 relative z-10">
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-accent transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <h3>Garantie</h3>
-                            <p>Assurance RCA complète</p>
-                            <p>Travail garanti 1 an</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Disponibilité</h3>
-                            <p>Lun-Ven: 08h00 - 19h00</p>
-                            <p>Sam-Dim: Urgences seulement</p>
-                        </div>
-                    </div>
-                    <div class="contact-map-preview" style="margin-top: 2rem; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=300&fit=crop" alt="Zone d'intervention Paris 15" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm" method="POST" action="#">
-                    <input type="text" name="name" placeholder="Votre nom" required aria-label="Nom">
-                    <input type="email" name="email" placeholder="Votre email" required aria-label="Email">
-                    <input type="tel" name="phone" placeholder="Votre téléphone" required aria-label="Téléphone">
-                    <textarea name="message" placeholder="Décrivez votre problème..." rows="5" required aria-label="Message"></textarea>
-                    <button type="submit" class="btn btn-primary">Envoyer</button>
-                </form>
-            </div>
-        </div>
-    </section>
 
-    <!-- Brands Section -->
-    <section class="brands">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">PARTENAIRES</div>
-                <h2>Nos Marques de Confiance</h2>
-            </div>
-            <div class="brands-grid">
-                <div class="brand-item">GROHE</div>
-                <div class="brand-item">GEBERIT</div>
-                <div class="brand-item">ATLANTIC</div>
-                <div class="brand-item">THERMOR</div>
-                <div class="brand-item">JACOB DELAFON</div>
-                <div class="brand-item">HANSGROHE</div>
+                <!-- Form -->
+                <div class="lg:w-7/12 p-12 lg:p-16 bg-white">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-brand-900">Nom complet</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 outline-none transition-all" placeholder="Jean Dupont">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-brand-900">Téléphone</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 outline-none transition-all" placeholder="06 12 34 56 78">
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-brand-900">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 outline-none transition-all" placeholder="jean@exemple.com">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-brand-900">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 outline-none transition-all" placeholder="Décrivez votre besoin..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-brand-900 text-white font-bold rounded-xl hover:bg-brand-accent transition-colors shadow-lg shadow-brand-900/20">
+                            Envoyer ma demande
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Plomberie Dupont</h3>
-                    <p>Artisan plombier local à Paris 15</p>
-                    <a href="tel:0184000000" style="color: var(--accent); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 0.5rem;">
-                        📞 01 84 00 00 00
-                    </a>
+    <footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-brand-900 rounded-lg flex items-center justify-center text-brand-accent text-sm shadow-md">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                        <span class="text-xl font-bold text-brand-900">ÉLITE Plomberie</span>
+                    </div>
+                    <p class="text-slate-500 max-w-sm">
+                        L'excellence au service de votre confort. Artisans plombiers qualifiés intervenant à Paris et en Île-de-France.
+                    </p>
                 </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#services">Dépannage urgent</a></li>
-                        <li><a href="#services">Recherche de fuite</a></li>
-                        <li><a href="#services">Débouchage</a></li>
-                        <li><a href="#services">Chauffe-eau</a></li>
-                        <li><a href="#services">Rénovation SdB</a></li>
+                
+                <div>
+                    <h4 class="font-bold text-brand-900 mb-4">Services</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="#" class="hover:text-brand-accent transition">Dépannage Urgent</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition">Recherche de fuite</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition">Rénovation Salle de bain</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition">Chauffe-eau</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Zones</h3>
-                    <ul>
-                        <li>Paris 15</li>
-                        <li>Paris 14</li>
-                        <li>Paris 7</li>
-                        <li>Vanves</li>
-                        <li>Issy-les-Moulineaux</li>
+
+                <div>
+                    <h4 class="font-bold text-brand-900 mb-4">Légal</h4>
+                    <ul class="space-y-2 text-slate-500">
+                        <li><a href="#" class="hover:text-brand-accent transition">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition">Politique de confidentialité</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition">CGV</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Plomberie Dupont - Artisan plombier Paris 15. Tous droits réservés.</p>
+            
+            <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-400 text-sm">© 2024 Élite Plomberie. Tous droits réservés.</p>
+                <p class="text-slate-400 text-sm flex items-center gap-2">
+                    Fait avec <i class="fa-solid fa-heart text-red-400"></i> à Paris
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/33712345678?text=Bonjour, je souhaite un devis pour mes travaux de plomberie" class="whatsapp-btn" target="_blank" title="Contactez-nous sur WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script src="script.js"></script>
 </body>
 </html>
